@@ -8,8 +8,8 @@ import (
 
 // Guard edits the given string.
 // example: 'create $#% contact' -> 'create-contact'.
-// @param string
-// @param string
+// Param: string
+// Param: string
 // return bool
 func Guard(b string) string {
 	return slug.Make(b)
@@ -17,7 +17,7 @@ func Guard(b string) string {
 
 // GuardArray edits the given string array.
 // example: 'create $#% contact' -> 'create-contact'.
-// @param []string
+// Param: []string
 // return []string
 func GuardArray(b []string) (guardArray []string) {
 	for _, c := range b {
@@ -27,7 +27,7 @@ func GuardArray(b []string) (guardArray []string) {
 }
 
 // IsInt is the given value an integer?
-// @param interface{}
+// Param: interface{}
 // return bool
 func IsInt(value interface{}) bool {
 	if reflect.TypeOf(value).Kind() == reflect.Int {
@@ -37,7 +37,7 @@ func IsInt(value interface{}) bool {
 }
 
 // IsUInt is the given value an unsigned integer?
-// @param interface{}
+// Param: interface{}
 // return bool
 func IsUInt(value interface{}) bool {
 	if reflect.TypeOf(value).Kind() == reflect.Uint {
@@ -47,7 +47,7 @@ func IsUInt(value interface{}) bool {
 }
 
 // IsUIntArray is the given value an unsigned integer array?
-// @param interface{}
+// Param: interface{}
 // return bool
 func IsUIntArray(value interface{}) bool {
 	t := reflect.TypeOf(value)
@@ -61,7 +61,7 @@ func IsUIntArray(value interface{}) bool {
 }
 
 // IsString is the given value an string?
-// @param interface{}
+// Param: interface{}
 // return bool
 func IsString(value interface{}) bool {
 	if reflect.TypeOf(value).Kind() == reflect.String {
@@ -71,7 +71,7 @@ func IsString(value interface{}) bool {
 }
 
 // IsStringArray is the given value an string array?
-// @param interface{}
+// Param: interface{}
 // return bool
 func IsStringArray(value interface{}) bool {
 	t := reflect.TypeOf(value)
@@ -85,7 +85,7 @@ func IsStringArray(value interface{}) bool {
 }
 
 // IsArray is the given value an array?
-// @param interface{}
+// Param: interface{}
 // return bool
 func IsArray(value interface{}) bool {
 	t := reflect.TypeOf(value)

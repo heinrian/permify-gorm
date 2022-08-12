@@ -71,7 +71,7 @@ func (repository *RoleRepository) Migrate() (err error) {
 // SINGLE FETCH OPTIONS
 
 // GetRoleByID get role by id.
-// @param uint
+// Param: uint
 // @return models.Role, error
 func (repository *RoleRepository) GetRoleByID(ID uint) (role models.Role, err error) {
 	err = repository.Database.First(&role, "roles.id = ?", ID).Error
@@ -79,7 +79,7 @@ func (repository *RoleRepository) GetRoleByID(ID uint) (role models.Role, err er
 }
 
 // GetRoleByIDWithPermissions get role by id with its permissions.
-// @param uint
+// Param: uint
 // @return models.Role, error
 func (repository *RoleRepository) GetRoleByIDWithPermissions(ID uint) (role models.Role, err error) {
 	err = repository.Database.Preload("Permissions").First(&role, "roles.id = ?", ID).Error
@@ -87,7 +87,7 @@ func (repository *RoleRepository) GetRoleByIDWithPermissions(ID uint) (role mode
 }
 
 // GetRoleByGuardName get role by guard name.
-// @param string
+// Param: string
 // @return models.Role, error
 func (repository *RoleRepository) GetRoleByGuardName(guardName string) (role models.Role, err error) {
 	err = repository.Database.Where("roles.guard_name = ?", guardName).First(&role).Error
@@ -95,7 +95,7 @@ func (repository *RoleRepository) GetRoleByGuardName(guardName string) (role mod
 }
 
 // GetRoleByGuardNameWithPermissions get role by guard name with its permissions.
-// @param string
+// Param: string
 // @return models.Role, error
 func (repository *RoleRepository) GetRoleByGuardNameWithPermissions(guardName string) (role models.Role, err error) {
 	err = repository.Database.Preload("Permissions").Where("roles.guard_name = ?", guardName).First(&role).Error
@@ -105,7 +105,7 @@ func (repository *RoleRepository) GetRoleByGuardNameWithPermissions(guardName st
 // MULTIPLE FETCH OPTIONS
 
 // GetRoles get roles by ids.
-// @param []uint
+// Param: []uint
 // @return collections.Role, error
 func (repository *RoleRepository) GetRoles(IDs []uint) (roles collections.Role, err error) {
 	err = repository.Database.Where("roles.id IN (?)", IDs).Find(&roles).Error
@@ -113,7 +113,7 @@ func (repository *RoleRepository) GetRoles(IDs []uint) (roles collections.Role, 
 }
 
 // GetRolesWithPermissions get roles by ids with its permissions.
-// @param []uint
+// Param: []uint
 // @return collections.Role, error
 func (repository *RoleRepository) GetRolesWithPermissions(IDs []uint) (roles collections.Role, err error) {
 	err = repository.Database.Preload("Permissions").Where("roles.id IN (?)", IDs).Find(&roles).Error
@@ -121,7 +121,7 @@ func (repository *RoleRepository) GetRolesWithPermissions(IDs []uint) (roles col
 }
 
 // GetRolesByGuardNames get roles by guard names.
-// @param []string
+// Param: []string
 // @return collections.Role, error
 func (repository *RoleRepository) GetRolesByGuardNames(guardNames []string) (roles collections.Role, err error) {
 	err = repository.Database.Where("roles.guard_name IN (?)", guardNames).Find(&roles).Error
@@ -129,7 +129,7 @@ func (repository *RoleRepository) GetRolesByGuardNames(guardNames []string) (rol
 }
 
 // GetRolesByGuardNamesWithPermissions get roles by guard names.
-// @param []string
+// Param: []string
 // @return collections.Role, error
 func (repository *RoleRepository) GetRolesByGuardNamesWithPermissions(guardNames []string) (roles collections.Role, err error) {
 	err = repository.Database.Preload("Permissions").Where("roles.guard_name IN (?)", guardNames).Find(&roles).Error
@@ -139,7 +139,7 @@ func (repository *RoleRepository) GetRolesByGuardNamesWithPermissions(guardNames
 // ID FETCH OPTIONS
 
 // GetRoleIDs get role ids. (with pagination)
-// @param repositories_scopes.GormPager
+// Param: repositories_scopes.GormPager
 // @return []uint, int64, error
 func (repository *RoleRepository) GetRoleIDs(pagination scopes.GormPager) (roleIDs []uint, totalCount int64, err error) {
 	err = repository.Database.Model(&models.Role{}).Count(&totalCount).Scopes(repository.paginate(pagination)).Pluck("roles.id", &roleIDs).Error
@@ -147,8 +147,8 @@ func (repository *RoleRepository) GetRoleIDs(pagination scopes.GormPager) (roleI
 }
 
 // GetRoleIDsOfUser get role ids of user. (with pagination)
-// @param uint
-// @param repositories_scopes.GormPager
+// Param: uint
+// Param: repositories_scopes.GormPager
 // @return []uint, int64, error
 func (repository *RoleRepository) GetRoleIDsOfUser(userID uint, pagination scopes.GormPager) (roleIDs []uint, totalCount int64, err error) {
 	err = repository.Database.Table("user_roles").Where("user_roles.user_id = ?", userID).Count(&totalCount).Scopes(repository.paginate(pagination)).Pluck("user_roles.role_id", &roleIDs).Error
@@ -156,8 +156,8 @@ func (repository *RoleRepository) GetRoleIDsOfUser(userID uint, pagination scope
 }
 
 // GetRoleIDsOfPermission get role ids of permission. (with pagination)
-// @param uint
-// @param repositories_scopes.GormPager
+// Param: uint
+// Param: repositories_scopes.GormPager
 // @return []uint, int64, error
 func (repository *RoleRepository) GetRoleIDsOfPermission(permissionID uint, pagination scopes.GormPager) (roleIDs []uint, totalCount int64, err error) {
 	err = repository.Database.Table("role_permissions").Where("role_permissions.permission_id = ?", permissionID).Count(&totalCount).Scopes(repository.paginate(pagination)).Pluck("role_permissions.role_id", &roleIDs).Error
@@ -167,22 +167,22 @@ func (repository *RoleRepository) GetRoleIDsOfPermission(permissionID uint, pagi
 // FirstOrCreate & Updates & Delete
 
 // FirstOrCreate create new role if name not exist.
-// @param *models.Role
+// Param: *models.Role
 // @return error
 func (repository *RoleRepository) FirstOrCreate(role *models.Role) error {
 	return repository.Database.Where(models.Role{GuardName: role.GuardName}).FirstOrCreate(role).Error
 }
 
 // Updates update role.
-// @param *models.Role
-// @param map[string]interface{}
+// Param: *models.Role
+// Param: map[string]interface{}
 // @return error
 func (repository *RoleRepository) Updates(role *models.Role, updates map[string]interface{}) (err error) {
 	return repository.Database.Model(role).Updates(updates).Error
 }
 
 // Delete delete role.
-// @param *models.Role
+// Param: *models.Role
 // @return error
 func (repository *RoleRepository) Delete(role *models.Role) (err error) {
 	return repository.Database.Transaction(func(tx *gorm.DB) error {

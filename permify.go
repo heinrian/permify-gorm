@@ -57,8 +57,8 @@ type Permify struct {
 // If withPermissions is true, it will preload the permissions to the role.
 // First parameter is can be role name or id, second parameter is boolean.
 // If the given variable is an array, the first element of the given array is returned.
-// @param interface{}
-// @param bool
+// Param: interface{}
+// Param: bool
 // @return models.Role, error
 func (s *Permify) GetRole(r interface{}, withPermissions bool) (role models.Role, err error) {
 	if helpers.IsArray(r) {
@@ -100,8 +100,8 @@ func (s *Permify) GetRole(r interface{}, withPermissions bool) (role models.Role
 // GetRoles fetch roles according to the role names or ids.
 // First parameter is can be role name(s) or id(s), second parameter is boolean.
 // If withPermissions is true, it will preload the permissions to the roles.
-// @param interface{}
-// @param bool
+// Param: interface{}
+// Param: bool
 // @return collections.Role, error
 func (s *Permify) GetRoles(r interface{}, withPermissions bool) (roles collections.Role, err error) {
 	if !helpers.IsArray(r) {
@@ -134,7 +134,7 @@ func (s *Permify) GetRoles(r interface{}, withPermissions bool) (roles collectio
 // GetAllRoles fetch all the roles. (with pagination option).
 // If withPermissions is true, it will preload the permissions to the role.
 // First parameter is role option.
-// @param options.RoleOption
+// Param: options.RoleOption
 // @return collections.Role, int64, error
 func (s *Permify) GetAllRoles(option options.RoleOption) (roles collections.Role, totalCount int64, err error) {
 	var roleIDs []uint
@@ -151,8 +151,8 @@ func (s *Permify) GetAllRoles(option options.RoleOption) (roles collections.Role
 // GetRolesOfUser fetch all the roles of the user. (with pagination option).
 // If withPermissions is true, it will preload the permissions to the role.
 // First parameter is user id, second parameter is role option.
-// @param uint
-// @param options.RoleOption
+// Param: uint
+// Param: options.RoleOption
 // @return collections.Role, int64, error
 func (s *Permify) GetRolesOfUser(userID uint, option options.RoleOption) (roles collections.Role, totalCount int64, err error) {
 	var roleIDs []uint
@@ -170,8 +170,8 @@ func (s *Permify) GetRolesOfUser(userID uint, option options.RoleOption) (roles 
 // Name parameter is converted to guard name. example: senior $#% associate -> senior-associate.
 // If a role with the same name has been created before, it will not create it again. (FirstOrCreate)
 // First parameter is role name, second parameter is role description.
-// @param string
-// @param string
+// Param: string
+// Param: string
 // @return error
 func (s *Permify) CreateRole(name string, description string) (err error) {
 	return s.RoleRepository.FirstOrCreate(&models.Role{
@@ -184,7 +184,7 @@ func (s *Permify) CreateRole(name string, description string) (err error) {
 // DeleteRole delete role.
 // If the role is in use, its relations from the pivot tables are deleted.
 // First parameter can be role name or id.
-// @param interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) DeleteRole(r interface{}) (err error) {
 	var role models.Role
@@ -198,8 +198,8 @@ func (s *Permify) DeleteRole(r interface{}) (err error) {
 // AddPermissionsToRole add permission to role.
 // First parameter can be role name or id, second parameter can be permission name(s) or id(s).
 // If the first parameter is an array, the first element of the first parameter is used.
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) AddPermissionsToRole(r interface{}, p interface{}) (err error) {
 	var role models.Role
@@ -224,8 +224,8 @@ func (s *Permify) AddPermissionsToRole(r interface{}, p interface{}) (err error)
 // ReplacePermissionsToRole overwrites the permissions of the role according to the permission names or ids.
 // First parameter can be role name or id, second parameter can be permission name(s) or id(s).
 // If the first parameter is an array, the first element of the first parameter is used.
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) ReplacePermissionsToRole(r interface{}, p interface{}) (err error) {
 	var role models.Role
@@ -250,8 +250,8 @@ func (s *Permify) ReplacePermissionsToRole(r interface{}, p interface{}) (err er
 // RemovePermissionsFromRole remove permissions from role according to the permission names or ids.
 // First parameter can be role name or id, second parameter can be permission name(s) or id(s).
 // If the first parameter is an array, the first element of the first parameter is used.
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) RemovePermissionsFromRole(r interface{}, p interface{}) (err error) {
 	var role models.Role
@@ -278,7 +278,7 @@ func (s *Permify) RemovePermissionsFromRole(r interface{}, p interface{}) (err e
 // GetPermission fetch permission according to the permission name or id.
 // First parameter can be permission name or id.
 // If the first parameter is an array, the first element of the given array is returned.
-// @param interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) GetPermission(p interface{}) (permission models.Permission, err error) {
 	if helpers.IsArray(p) {
@@ -310,7 +310,7 @@ func (s *Permify) GetPermission(p interface{}) (permission models.Permission, er
 
 // GetPermissions fetch permissions according to the permission names or ids.
 // First parameter is can be permission name(s) or id(s).
-// @param interface{}
+// Param: interface{}
 // @return collections.Permission, error
 func (s *Permify) GetPermissions(p interface{}) (permissions collections.Permission, err error) {
 	if !helpers.IsArray(p) {
@@ -336,7 +336,7 @@ func (s *Permify) GetPermissions(p interface{}) (permissions collections.Permiss
 
 // GetAllPermissions fetch all the permissions. (with pagination option).
 // First parameter is permission option.
-// @param options.PermissionOption
+// Param: options.PermissionOption
 // @return collections.Permission, int64, error
 func (s *Permify) GetAllPermissions(option options.PermissionOption) (permissions collections.Permission, totalCount int64, err error) {
 	var permissionIDs []uint
@@ -351,8 +351,8 @@ func (s *Permify) GetAllPermissions(option options.PermissionOption) (permission
 
 // GetDirectPermissionsOfUser fetch all direct permissions of the user. (with pagination option)
 // First parameter is user id, second parameter is permission option.
-// @param uint
-// @param options.PermissionOption
+// Param: uint
+// Param: options.PermissionOption
 // @return collections.Permission, int64, error
 func (s *Permify) GetDirectPermissionsOfUser(userID uint, option options.PermissionOption) (permissions collections.Permission, totalCount int64, err error) {
 	var permissionIDs []uint
@@ -367,8 +367,8 @@ func (s *Permify) GetDirectPermissionsOfUser(userID uint, option options.Permiss
 
 // GetPermissionsOfRoles fetch all permissions of the roles. (with pagination option)
 // First parameter can be role name(s) or id(s), second parameter is permission option.
-// @param interface{}
-// @param options.PermissionOption
+// Param: interface{}
+// Param: options.PermissionOption
 // @return collections.Permission, int64, error
 func (s *Permify) GetPermissionsOfRoles(r interface{}, option options.PermissionOption) (permissions collections.Permission, totalCount int64, err error) {
 	var roles collections.Role
@@ -390,7 +390,7 @@ func (s *Permify) GetPermissionsOfRoles(r interface{}, option options.Permission
 
 // GetAllPermissionsOfUser fetch all permissions of the user that come with direct and roles.
 // First parameter is user id.
-// @param uint
+// Param: uint
 // @return collections.Permission, error
 func (s *Permify) GetAllPermissionsOfUser(userID uint) (permissions collections.Permission, err error) {
 	var userRoleIDs []uint
@@ -417,7 +417,7 @@ func (s *Permify) GetAllPermissionsOfUser(userID uint) (permissions collections.
 // CreatePermission create new permission.
 // Name parameter is converted to guard name. example: create $#% contact -> create-contact.
 // If a permission with the same name has been created before, it will not create it again. (FirstOrCreate)
-// @param string
+// Param: string
 // @param string
 // @return error
 func (s *Permify) CreatePermission(name string, description string) (err error) {

@@ -5,8 +5,8 @@ import (
 )
 
 // InArray is the value in the first parameter an element of the array in the second parameter?
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // return bool
 func InArray(val interface{}, array interface{}) (exists bool) {
 	exists = false
@@ -24,7 +24,7 @@ func InArray(val interface{}, array interface{}) (exists bool) {
 }
 
 // JoinUintArrays concatenates the given uint arrays and makes them a single array.
-// @param ...[]uint
+// Param: ...[]uint
 // return []uint
 func JoinUintArrays(array ...[]uint) (j []uint) {
 	for _, a := range array {
@@ -36,7 +36,7 @@ func JoinUintArrays(array ...[]uint) (j []uint) {
 }
 
 // RemoveDuplicateValues make singular of repeating values in an array.
-// @param []uint
+// Param: []uint
 // return []uint
 func RemoveDuplicateValues(intSlice []uint) []uint {
 	keys := make(map[uint]bool)

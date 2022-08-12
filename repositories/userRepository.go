@@ -42,8 +42,8 @@ type UserRepository struct {
 // ACTIONS
 
 // AddPermissions add direct permissions to user.
-// @param uint
-// @param collections.Permission
+// Param: uint
+// Param: collections.Permission
 // @return error
 func (repository *UserRepository) AddPermissions(userID uint, permissions collections.Permission) error {
 	var userPermissions []pivot.UserPermissions
@@ -57,8 +57,8 @@ func (repository *UserRepository) AddPermissions(userID uint, permissions collec
 }
 
 // ReplacePermissions replace direct permissions of user.
-// @param uint
-// @param collections.Permission
+// Param: uint
+// Param: collections.Permission
 // @return error
 func (repository *UserRepository) ReplacePermissions(userID uint, permissions collections.Permission) error {
 	return repository.Database.Transaction(func(tx *gorm.DB) error {
@@ -85,8 +85,8 @@ func (repository *UserRepository) ReplacePermissions(userID uint, permissions co
 }
 
 // RemovePermissions remove direct permissions of user.
-// @param uint
-// @param collections.Permission
+// Param: uint
+// Param: collections.Permission
 // @return error
 func (repository *UserRepository) RemovePermissions(userID uint, permissions collections.Permission) error {
 	var userPermissions []pivot.UserPermissions
@@ -100,15 +100,15 @@ func (repository *UserRepository) RemovePermissions(userID uint, permissions col
 }
 
 // ClearPermissions remove all direct permissions of user.
-// @param uint
+// Param: uint
 // @return error
 func (repository *UserRepository) ClearPermissions(userID uint) (err error) {
 	return repository.Database.Where("user_permissions.user_id = ?", userID).Delete(&pivot.UserPermissions{}).Error
 }
 
 // AddRoles add roles to user.
-// @param uint
-// @param collections.Role
+// Param: uint
+// Param: collections.Role
 // @return error
 func (repository *UserRepository) AddRoles(userID uint, roles collections.Role) error {
 	var userRoles []pivot.UserRoles
@@ -122,8 +122,8 @@ func (repository *UserRepository) AddRoles(userID uint, roles collections.Role) 
 }
 
 // ReplaceRoles replace roles of user.
-// @param uint
-// @param collections.Role
+// Param: uint
+// Param: collections.Role
 // @return error
 func (repository *UserRepository) ReplaceRoles(userID uint, roles collections.Role) error {
 	return repository.Database.Transaction(func(tx *gorm.DB) error {
@@ -147,8 +147,8 @@ func (repository *UserRepository) ReplaceRoles(userID uint, roles collections.Ro
 }
 
 // RemoveRoles remove roles of user.
-// @param uint
-// @param collections.Role
+// Param: uint
+// Param: collections.Role
 // @return error
 func (repository *UserRepository) RemoveRoles(userID uint, roles collections.Role) error {
 	var userRoles []pivot.UserRoles
@@ -162,7 +162,7 @@ func (repository *UserRepository) RemoveRoles(userID uint, roles collections.Rol
 }
 
 // ClearRoles remove all roles of user.
-// @param uint
+// Param: uint
 // @return error
 func (repository *UserRepository) ClearRoles(userID uint) (err error) {
 	return repository.Database.Where("user_roles.user_id = ?", userID).Delete(&pivot.UserRoles{}).Error
@@ -171,8 +171,8 @@ func (repository *UserRepository) ClearRoles(userID uint) (err error) {
 // CONTROLS
 
 // HasRole does the user have the given role?
-// @param uint
-// @param models.Role
+// Param: uint
+// Param: models.Role
 // @return bool, error
 func (repository *UserRepository) HasRole(userID uint, role models.Role) (b bool, err error) {
 	var count int64
@@ -181,8 +181,8 @@ func (repository *UserRepository) HasRole(userID uint, role models.Role) (b bool
 }
 
 // HasAllRoles does the user have all the given roles?
-// @param uint
-// @param collections.Role
+// Param: uint
+// Param: collections.Role
 // @return bool, error
 func (repository *UserRepository) HasAllRoles(userID uint, roles collections.Role) (b bool, err error) {
 	var count int64
@@ -191,8 +191,8 @@ func (repository *UserRepository) HasAllRoles(userID uint, roles collections.Rol
 }
 
 // HasAnyRoles does the user have any of the given roles?
-// @param uint
-// @param collections.Role
+// Param: uint
+// Param: collections.Role
 // @return bool, error
 func (repository *UserRepository) HasAnyRoles(userID uint, roles collections.Role) (b bool, err error) {
 	var count int64
@@ -201,7 +201,7 @@ func (repository *UserRepository) HasAnyRoles(userID uint, roles collections.Rol
 }
 
 // HasDirectPermission does the user have the given permission? (not including the permissions of the roles)
-// @param uint
+// Param: uint
 // @param collections.Permission
 // @return bool, error
 func (repository *UserRepository) HasDirectPermission(userID uint, permission models.Permission) (b bool, err error) {

@@ -1,4 +1,9 @@
 
+ℹ️ |optimized for https://github.com/swaggo/swag! <br> by remove @param values!
+:---: | :---
+
+
+
 ![permify-gorm](https://user-images.githubusercontent.com/39353278/157410086-42e02752-d5a9-4c64-bdc3-d3a203a247d7.png)
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/Permify/permify-gorm.svg)](https://pkg.go.dev/github.com/Permify/permify-gorm)
