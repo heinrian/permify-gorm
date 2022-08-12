@@ -3,10 +3,10 @@ package repositories
 import (
 	"gorm.io/gorm"
 
-	"github.com/Permify/permify-gorm/collections"
-	"github.com/Permify/permify-gorm/models"
-	"github.com/Permify/permify-gorm/models/pivot"
-	"github.com/Permify/permify-gorm/repositories/scopes"
+	"github.com/heinrian/permify-gorm/collections"
+	"github.com/heinrian/permify-gorm/models"
+	"github.com/heinrian/permify-gorm/models/pivot"
+	"github.com/heinrian/permify-gorm/repositories/scopes"
 )
 
 // IRoleRepository its data access layer abstraction of role.

@@ -6,12 +6,12 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/Permify/permify-gorm/collections"
-	"github.com/Permify/permify-gorm/models"
-	"github.com/Permify/permify-gorm/options"
-	"github.com/Permify/permify-gorm/repositories/mocks"
-	"github.com/Permify/permify-gorm/repositories/scopes"
-	"github.com/Permify/permify-gorm/utils"
+	"github.com/heinrian/permify-gorm/collections"
+	"github.com/heinrian/permify-gorm/models"
+	"github.com/heinrian/permify-gorm/options"
+	"github.com/heinrian/permify-gorm/repositories/mocks"
+	"github.com/heinrian/permify-gorm/repositories/scopes"
+	"github.com/heinrian/permify-gorm/utils"
 )
 
 func TestPermify(t *testing.T) {

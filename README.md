@@ -52,7 +52,7 @@ go get gorm.io/driver/clickhouse
 Import permify.
 
 ```go
-import permify `github.com/Permify/permify-gorm`
+import permify `github.com/heinrian/permify-gorm`
 ```
 
 Initialize the new Permify.
