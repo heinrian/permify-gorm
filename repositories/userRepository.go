@@ -202,7 +202,7 @@ func (repository *UserRepository) HasAnyRoles(userID uint, roles collections.Rol
 
 // HasDirectPermission does the user have the given permission? (not including the permissions of the roles)
 // Param: uint
-// @param collections.Permission
+// Param: collections.Permission
 // @return bool, error
 func (repository *UserRepository) HasDirectPermission(userID uint, permission models.Permission) (b bool, err error) {
 	var count int64
@@ -211,8 +211,8 @@ func (repository *UserRepository) HasDirectPermission(userID uint, permission mo
 }
 
 // HasAllDirectPermissions does the user have all the given permissions? (not including the permissions of the roles)
-// @param uint
-// @param collections.Permission
+// Param: uint
+// Param: collections.Permission
 // @return bool, error
 func (repository *UserRepository) HasAllDirectPermissions(userID uint, permissions collections.Permission) (b bool, err error) {
 	var count int64
@@ -221,8 +221,8 @@ func (repository *UserRepository) HasAllDirectPermissions(userID uint, permissio
 }
 
 // HasAnyDirectPermissions does the user have any of the given permissions? (not including the permissions of the roles)
-// @param uint
-// @param collections.Permission
+// Param: uint
+// Param: collections.Permission
 // @return bool, error
 func (repository *UserRepository) HasAnyDirectPermissions(userID uint, permissions collections.Permission) (b bool, err error) {
 	var count int64

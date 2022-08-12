@@ -201,31 +201,31 @@ func (repository *RoleRepository) Delete(role *models.Role) (err error) {
 // ACTIONS
 
 // AddPermissions add permissions to role.
-// @param *models.Role
-// @param collections.Permission
+// Param: *models.Role
+// Param: collections.Permission
 // @return error
 func (repository *RoleRepository) AddPermissions(role *models.Role, permissions collections.Permission) error {
 	return repository.Database.Model(role).Association("Permissions").Append(permissions.Origin())
 }
 
 // ReplacePermissions replace permissions of role.
-// @param *models.Role
-// @param collections.Permission
+// Param: *models.Role
+// Param: collections.Permission
 // @return error
 func (repository *RoleRepository) ReplacePermissions(role *models.Role, permissions collections.Permission) error {
 	return repository.Database.Model(role).Association("Permissions").Replace(permissions.Origin())
 }
 
 // RemovePermissions remove permissions of role.
-// @param *models.Role
-// @param collections.Permission
+// Param: *models.Role
+// Param: collections.Permission
 // @return error
 func (repository *RoleRepository) RemovePermissions(role *models.Role, permissions collections.Permission) error {
 	return repository.Database.Model(role).Association("Permissions").Delete(permissions.Origin())
 }
 
 // ClearPermissions remove all permissions of role.
-// @param *models.Role
+// Param: *models.Role
 // @return error
 func (repository *RoleRepository) ClearPermissions(role *models.Role) (err error) {
 	return repository.Database.Model(role).Association("Permissions").Clear()
@@ -234,8 +234,8 @@ func (repository *RoleRepository) ClearPermissions(role *models.Role) (err error
 // Controls
 
 // HasPermission does the role or any of the roles have given permission?
-// @param collections.Role
-// @param models.Permission
+// Param: collections.Role
+// Param: models.Permission
 // @return bool, error
 func (repository *RoleRepository) HasPermission(roles collections.Role, permission models.Permission) (b bool, err error) {
 	var count int64
@@ -244,8 +244,8 @@ func (repository *RoleRepository) HasPermission(roles collections.Role, permissi
 }
 
 // HasAllPermissions does the role or roles have all the given permissions?
-// @param collections.Role
-// @param collections.Permission
+// Param: collections.Role
+// Param: collections.Permission
 // @return bool, error
 func (repository *RoleRepository) HasAllPermissions(roles collections.Role, permissions collections.Permission) (b bool, err error) {
 	var count int64
@@ -254,8 +254,8 @@ func (repository *RoleRepository) HasAllPermissions(roles collections.Role, perm
 }
 
 // HasAnyPermissions does the role or roles have any of the given permissions?
-// @param collections.Role
-// @param collections.Permission
+// Param: collections.Role
+// Param: collections.Permission
 // @return bool, error
 func (repository *RoleRepository) HasAnyPermissions(roles collections.Role, permissions collections.Permission) (b bool, err error) {
 	var count int64
@@ -264,7 +264,7 @@ func (repository *RoleRepository) HasAnyPermissions(roles collections.Role, perm
 }
 
 // paginate pagging if pagination option is true.
-// @param repositories_scopes.GormPager
+// Param: repositories_scopes.GormPager
 // @return func(db *gorm.DB) *gorm.DB
 func (repository *RoleRepository) paginate(pagination scopes.GormPager) func(db *gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {

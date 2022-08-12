@@ -418,7 +418,7 @@ func (s *Permify) GetAllPermissionsOfUser(userID uint) (permissions collections.
 // Name parameter is converted to guard name. example: create $#% contact -> create-contact.
 // If a permission with the same name has been created before, it will not create it again. (FirstOrCreate)
 // Param: string
-// @param string
+// Param: string
 // @return error
 func (s *Permify) CreatePermission(name string, description string) (err error) {
 	return s.PermissionRepository.FirstOrCreate(&models.Permission{
@@ -432,7 +432,7 @@ func (s *Permify) CreatePermission(name string, description string) (err error) 
 // If the permission is in use, its relations from the pivot tables are deleted.
 // First parameter can be permission name or id.
 // If the first parameter is an array, the first element of the given array is used.
-// @param interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) DeletePermission(p interface{}) (err error) {
 	var permission models.Permission
@@ -447,8 +447,8 @@ func (s *Permify) DeletePermission(p interface{}) (err error) {
 
 // AddPermissionsToUser add direct permission or permissions to user according to the permission names or ids.
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return error
 func (s *Permify) AddPermissionsToUser(userID uint, p interface{}) (err error) {
 	var permissions collections.Permission
@@ -466,8 +466,8 @@ func (s *Permify) AddPermissionsToUser(userID uint, p interface{}) (err error) {
 
 // ReplacePermissionsToUser overwrites the direct permissions of the user according to the permission names or ids.
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return error
 func (s *Permify) ReplacePermissionsToUser(userID uint, p interface{}) (err error) {
 	var permissions collections.Permission
@@ -485,8 +485,8 @@ func (s *Permify) ReplacePermissionsToUser(userID uint, p interface{}) (err erro
 
 // RemovePermissionsFromUser remove direct permissions from user according to the permission names or ids.
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return error
 func (s *Permify) RemovePermissionsFromUser(userID uint, p interface{}) (err error) {
 	var permissions collections.Permission
@@ -504,8 +504,8 @@ func (s *Permify) RemovePermissionsFromUser(userID uint, p interface{}) (err err
 
 // AddRolesToUser add role or roles to user according to the role names or ids.
 // First parameter is the user id, second parameter is can be role name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return error
 func (s *Permify) AddRolesToUser(userID uint, r interface{}) (err error) {
 	var roles collections.Role
@@ -523,8 +523,8 @@ func (s *Permify) AddRolesToUser(userID uint, r interface{}) (err error) {
 
 // ReplaceRolesToUser overwrites the roles of the user according to the role names or ids.
 // First parameter is the user id, second parameter is can be role name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return error
 func (s *Permify) ReplaceRolesToUser(userID uint, r interface{}) (err error) {
 	var roles collections.Role
@@ -542,8 +542,8 @@ func (s *Permify) ReplaceRolesToUser(userID uint, r interface{}) (err error) {
 
 // RemoveRolesFromUser remove roles from user according to the role names or ids.
 // First parameter is the user id, second parameter is can be role name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return error
 func (s *Permify) RemoveRolesFromUser(userID uint, r interface{}) (err error) {
 	var roles collections.Role
@@ -566,8 +566,8 @@ func (s *Permify) RemoveRolesFromUser(userID uint, r interface{}) (err error) {
 // RoleHasPermission does the role or any of the roles have given permission?
 // First parameter is can be role name(s) or id(s), second parameter is can be permission name or id.
 // If the second parameter is an array, the first element of the given array is used.
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) RoleHasPermission(r interface{}, p interface{}) (b bool, err error) {
 	var roles collections.Role
@@ -587,8 +587,8 @@ func (s *Permify) RoleHasPermission(r interface{}, p interface{}) (b bool, err e
 
 // RoleHasAllPermissions does the role or roles have all the given permissions?
 // First parameter is can be role name(s) or id(s), second parameter is can be permission name(s) or id(s).
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) RoleHasAllPermissions(r interface{}, p interface{}) (b bool, err error) {
 	var roles collections.Role
@@ -608,8 +608,8 @@ func (s *Permify) RoleHasAllPermissions(r interface{}, p interface{}) (b bool, e
 
 // RoleHasAnyPermissions does the role or roles have any of the given permissions?
 // First parameter is can be role name(s) or id(s), second parameter is can be permission name(s) or id(s).
-// @param interface{}
-// @param interface{}
+// Param: interface{}
+// Param: interface{}
 // @return error
 func (s *Permify) RoleHasAnyPermissions(r interface{}, p interface{}) (b bool, err error) {
 	var roles collections.Role
@@ -632,8 +632,8 @@ func (s *Permify) RoleHasAnyPermissions(r interface{}, p interface{}) (b bool, e
 // UserHasRole does the user have the given role?
 // First parameter is the user id, second parameter is can be role name or id.
 // If the second parameter is an array, the first element of the given array is used.
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasRole(userID uint, r interface{}) (b bool, err error) {
 	var role models.Role
@@ -646,8 +646,8 @@ func (s *Permify) UserHasRole(userID uint, r interface{}) (b bool, err error) {
 
 // UserHasAllRoles does the user have all the given roles?
 // First parameter is the user id, second parameter is can be role name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasAllRoles(userID uint, r interface{}) (b bool, err error) {
 	var roles collections.Role
@@ -660,8 +660,8 @@ func (s *Permify) UserHasAllRoles(userID uint, r interface{}) (b bool, err error
 
 // UserHasAnyRoles does the user have any of the given roles?
 // First parameter is the user id, second parameter is can be role name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasAnyRoles(userID uint, r interface{}) (b bool, err error) {
 	var roles collections.Role
@@ -675,8 +675,8 @@ func (s *Permify) UserHasAnyRoles(userID uint, r interface{}) (b bool, err error
 // UserHasDirectPermission does the user have the given permission? (not including the permissions of the roles)
 // First parameter is the user id, second parameter is can be permission name or id.
 // If the second parameter is an array, the first element of the given array is used.
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasDirectPermission(userID uint, p interface{}) (b bool, err error) {
 	var permission models.Permission
@@ -689,8 +689,8 @@ func (s *Permify) UserHasDirectPermission(userID uint, p interface{}) (b bool, e
 
 // UserHasAllDirectPermissions does the user have all the given permissions? (not including the permissions of the roles)
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasAllDirectPermissions(userID uint, p interface{}) (b bool, err error) {
 	var permissions collections.Permission
@@ -703,8 +703,8 @@ func (s *Permify) UserHasAllDirectPermissions(userID uint, p interface{}) (b boo
 
 // UserHasAnyDirectPermissions does the user have any of the given permissions? (not including the permissions of the roles)
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasAnyDirectPermissions(userID uint, p interface{}) (b bool, err error) {
 	var permissions collections.Permission
@@ -718,8 +718,8 @@ func (s *Permify) UserHasAnyDirectPermissions(userID uint, p interface{}) (b boo
 // UserHasPermission does the user have the given permission? (including the permissions of the roles)
 // First parameter is the user id, second parameter is can be permission name or id.
 // If the second parameter is an array, the first element of the given array is used.
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasPermission(userID uint, p interface{}) (b bool, err error) {
 	var permission models.Permission
@@ -759,8 +759,8 @@ func (s *Permify) UserHasPermission(userID uint, p interface{}) (b bool, err err
 
 // UserHasAllPermissions does the user have all the given permissions? (including the permissions of the roles).
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasAllPermissions(userID uint, p interface{}) (b bool, err error) {
 	var permissions collections.Permission
@@ -800,8 +800,8 @@ func (s *Permify) UserHasAllPermissions(userID uint, p interface{}) (b bool, err
 
 // UserHasAnyPermissions does the user have any of the given permissions? (including the permissions of the roles).
 // First parameter is the user id, second parameter is can be permission name(s) or id(s).
-// @param uint
-// @param interface{}
+// Param: uint
+// Param: interface{}
 // @return bool, error
 func (s *Permify) UserHasAnyPermissions(userID uint, p interface{}) (b bool, err error) {
 	var permissions collections.Permission
