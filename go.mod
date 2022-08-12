@@ -1,4 +1,4 @@
-module github.com/Permify/permify-gorm
+module github.com/heinrian/permify-gorm
 
 go 1.17
 
